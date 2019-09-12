@@ -14,6 +14,12 @@ const ap = new APlayer({
         artist: '손디아 (Sondia)',
         url: 'http://ws.stream.qqmusic.qq.com/C4001004TdwL4F73f6.m4a?guid=933646329&vkey=6A0E1F2ECBBF02D95B40F3282293E7F3671E00928B16C28417A62AA91A49032BEC293D26EE467C68752ABF31B12DF2794001A55046E36777&uin=0&fromtag=66',
         cover: 'https://y.gtimg.cn/music/photo_new/T002R300x300M000000Mix2w1utUOr.jpg?max_age=2592000',
+      },
+      {
+        name: "Remember Me (Lullaby)",
+        artist: 'Gael Garcia Bernal,Gabriella Flores,Libertad García Fonzi',
+        url: 'http://ws.stream.qqmusic.qq.com/C400003UQVVZ4aXTsJ.m4a?guid=747951145&vkey=96032424B8848BC2119FC8AF5D76542E02752448F1AF9180838FE954435189E4F438BC33E797C6C12C58A4BD20BBC6AE1232F70FAB71BA8F&uin=0&fromtag=66',
+        cover: '//y.gtimg.cn/music/photo_new/T002R300x300M000003cQfbg305tGS.jpg?max_age=2592000',
       }
     ]
 });
