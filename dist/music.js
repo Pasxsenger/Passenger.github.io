@@ -7,7 +7,7 @@ const ap = new APlayer({
         name: "Senorita",
         artist: 'Shawn Mendes,Camila Cabello',
         url: 'music/Shawn Mendes & Camila Cabello - Señorita.m4a',
-        cover: 'http://p1.music.126.net/tywnf5s0LaPMM640DKQTkQ==/109951164202370414.jpg?param=130y130',
+        cover: 'https://p1.music.126.net/tywnf5s0LaPMM640DKQTkQ==/109951164202370414.jpg?param=130y130',
       },
       {
         name: "어른 (大人)",
