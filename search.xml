@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[数据库实验五]]></title>
+    <url>%2F2019%2F10%2F30%2F%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E9%AA%8C%E4%BA%94%2F</url>
+    <content type="text"><![CDATA[12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879--1．创建一windows用户（名字自定），用sql语句建立windows验证模式的登录名。默认数据库为student--2．用sql语句和系统存储过程建立登录名sqluser,密码为1234 --sqlcreate login sqluser with password='1234',default_database=student--存储过程exec sp_addlogin 'sqluser','1234'--3．为student数据库新建用户u1，其登录名为sqluser。create user u1 from login sqluser--4．新建登录usersf，并将其加入到sysadmin固定服务器角色中。exec sp_addsrvrolemember 'usersf','sysadmin'--5．将student用户usersf（登录名为usersf）加入到db_owner角色中，使其全权负责该数据库,并验证其权限。exec sp_addsrvrolemember 'db_owner','usersf'--6．为SPJ数据库新建用户u2，u3，其登录名分别为u2，u3。create login u2 with password='',default_database=SPJcreate user u2 for login u2create login u3 with password='',default_database=SPJcreate user u3 for login u3--（1）授予用户u2对S表有SELECT 权，对P表颜色（COLOR）具有更新权限；grant selecton Sto u2grant update(color)on Pto u2--（2）u2将其拥有的权限授予u3；grant u2to u3--（3）用sql语句逐一验证u2、u3所获得的权限。select * from Supdate Pset color='红'--（4）撤销用户u3所获得的权限，并验证。revoke selecton table Sfrom u3revoke update(color)on table Pfrom u3--7.在student数据库中建立角色operate,该角色具有对student和course表的查询权限；具有对表sc的插入和修改权限。create role operategrant selecton studentto operategrant selecton courseto operategrant update,inserton scto operate--8.拒绝用户u1对sc表的修改权限。deny update on scto u1 cascade--9.使用存储过程将角色operate赋给用户u1,并用sql语句验证其权限。（特别验证u1对sc表的修改权限）exec sp_addrolemember 'operate','u1'select *from studentselect *from courseupdate scset grade = 100where sno = '200515001' and cno = '1']]></content>
+      <categories>
+        <category>Data Base Management System</category>
+      </categories>
+      <tags>
+        <tag>Data Base</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[洛谷 P1020 导弹拦截]]></title>
     <url>%2F2019%2F10%2F30%2F%E6%B4%9B%E8%B0%B7-P1020-%E5%AF%BC%E5%BC%B9%E6%8B%A6%E6%88%AA%2F</url>
     <content type="text"><![CDATA[题目描述某国为了防御敌国的导弹袭击，发展出一种导弹拦截系统。但是这种导弹拦截系统有一个缺陷：虽然它的第一发炮弹能够到达任意的高度，但是以后每一发炮弹都不能高于前一发的高度。某天，雷达捕捉到敌国的导弹来袭。由于该系统还在试用阶段，所以只有一套系统，因此有可能不能拦截所有的导弹。 输入导弹依次飞来的高度（雷达给出的高度数据是≤50000的正整数），计算这套系统最多能拦截多少导弹，如果要拦截所有导弹最少要配备多少套这种导弹拦截系统。 输入格式1行，若干个整数（个数≤100000） 输出格式2行，每行一个整数，第一个数字表示这套系统最多能拦截多少导弹，第二个数字表示如果要拦截所有导弹最少要配备多少套这种导弹拦截系统。 输入输出样例输入 #1 1389 207 155 300 299 170 158 65 输出 #1 1262 说明/提示为了让大家更好地测试n方算法，本题开启spj，n方100分，nlogn200分 每点两问，按问给分 题解12345678910111213141516171819202122232425262728293031323334353637383940414243#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;algorithm&gt;using namespace std;int a[100010], d1[100010], d2[100010], n;inline bool read(int &amp;x) &#123; char c = getchar(); if (c == EOF) return false; while (c &gt; '9' || c &lt; '0') c = getchar(); while (c &gt;= '0'&amp;&amp;c &lt;= '9') &#123; x = (x &lt;&lt; 1) + (x &lt;&lt; 3) + (c ^ 48); c = getchar(); &#125; return true;&#125;int main() &#123; //freopen("1.txt", "r", stdin); //freopen("2.txt", "w", stdout); while (read(a[++n])); n--; int len1 = 1, len2 = 1; d1[1] = d2[1] = a[1]; for (int i = 2; i &lt;= n; i++) &#123; if (d1[len1] &gt;= a[i]) d1[++len1] = a[i]; else *upper_bound(d1 + 1, d1 + 1 + len1, a[i], greater&lt;int&gt;()) = a[i]; if (d2[len2] &lt; a[i]) d2[++len2] = a[i]; else *lower_bound(d2 + 1, d2 + 1 + len2, a[i]) = a[i]; &#125; printf("%d\n%d", len1, len2); //fclose(stdin); //fclose(stdout) return 0;&#125;]]></content>
