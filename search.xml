@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[数据结构实验五]]></title>
+    <url>%2F2019%2F11%2F04%2F%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%BA%94%2F</url>
+    <content type="text"><![CDATA[问题描述1.二叉树的创建（顺序存储&amp;链式存储）2.进行先序或中序或后序遍历123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899#include&lt;cstdio&gt;#include&lt;cstdlib&gt;#include&lt;iostream&gt;using namespace std;//二叉树顺序存储#define MAX_TREE_SIZE 100typedef int TElemType;TElemType Nil = 0;typedef TElemType SqBiTree[MAX_TREE_SIZE];SqBiTree bt;int SqBiTree_Len;void InitSqBiTree(SqBiTree &amp;bt)&#123; for (int i = 0; i &lt; MAX_TREE_SIZE; i++) bt[i] = Nil; printf("二叉树顺序初始化完毕\n"); return;&#125;void CreateSqBiTree(SqBiTree &amp;bt)&#123; printf("请输入结点个数（小于%d）\n", MAX_TREE_SIZE); scanf("%d", &amp;SqBiTree_Len); printf("请输入各结点的值（非零），空结点输入零，两结点之间用空格分开\n"); for (int i = 0; i &lt; SqBiTree_Len; i++) &#123; scanf("%d", &amp;bt[i]); if (i != 0 &amp;&amp; bt[(i + 1) / 2 - 1] == Nil &amp;&amp; bt[i] != Nil) &#123; printf("无双亲的非根节点,顺序存储失败！\n"); return; &#125; &#125; printf("二叉树顺序存储成功\n"); return;&#125;void SqPreOrderTraverse(SqBiTree bt,int i)&#123; if (bt[i - 1] != 0) &#123; printf("%d ", bt[i - 1]); SqPreOrderTraverse(bt, i * 2); SqPreOrderTraverse(bt, i * 2 + 1); &#125; return;&#125;//二叉树链式存储typedef enum PointerTag &#123; Link, Thread &#125;;typedef struct BiThrNode &#123; TElemType data; struct BiThrNode *lchild, *rchild; PointerTag LTag, RTag;&#125;BiThrNode, *BiThrTree;void CreateThrBiTree(BiThrTree &amp;T)&#123; char ch; cin &gt;&gt; ch; //scanf("%c", &amp;ch); if (ch == '#') T = NULL; else &#123; T = (BiThrNode*)malloc(sizeof(BiThrNode)); T-&gt;data = ch - '0'; CreateThrBiTree(T-&gt;lchild); CreateThrBiTree(T-&gt;rchild); &#125; return;&#125;void ThrPreOrderTraverse(BiThrNode* T)&#123; if (T != NULL) &#123; printf("%d ", T-&gt;data); ThrPreOrderTraverse(T-&gt;lchild); ThrPreOrderTraverse(T-&gt;rchild); &#125; return;&#125;int main()&#123; InitSqBiTree(bt); CreateSqBiTree(bt); printf("先序遍历顺序二叉树结果为："); SqPreOrderTraverse(bt, 1); printf("\n\n"); BiThrTree T; printf("请输入结点内容，空结点则输入#\n"); CreateThrBiTree(T); printf("先序遍历链式二叉树结果为："); ThrPreOrderTraverse(T); printf("\n"); return 0;&#125;]]></content>
+      <categories>
+        <category>Algorithms and Data Structures</category>
+      </categories>
+      <tags>
+        <tag>Data Structure Experiment</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[一行 Python 代码能实现什么丧心病狂的功能？]]></title>
     <url>%2F2019%2F11%2F04%2F%E4%B8%80%E8%A1%8C-Python-%E4%BB%A3%E7%A0%81%E8%83%BD%E5%AE%9E%E7%8E%B0%E4%BB%80%E4%B9%88%E4%B8%A7%E5%BF%83%E7%97%85%E7%8B%82%E7%9A%84%E5%8A%9F%E8%83%BD%EF%BC%9F%2F</url>
     <content type="text"><![CDATA[1.一行代码打印乘法口诀1print('\n'.join([' '.join(["%2s x%2s = %2s"%(j,i,i*j) for j in range(1,i+1)]) for i in range(1,10)])) 2.一行代码打印迷宫1print(''.join(__import__('random').choice('\u2571\u2572') for i in range(50*24))) 3.一行代码（土味）表白1print('\n'.join([''.join([('Love'[(x-y) % len('Love')] if ((x*0.05)**2+(y*0.1)**2-1)**3-(x*0.05)**2*(y*0.1)**3 &lt;= 0else' ') for x in range(-30, 30)]) for y in range(30, -30, -1)])) 4.一行代码打印龟龟（/滑稽）1print('\n'.join([''.join(['*' if abs((lambda a:lambda z,c,n:a(a,z,c,n))(lambda s,z,c,n:z if n==0 else s(s,z*z+c,c,n-1))(0,0.02*x+0.05j*y,40))&lt;2 else ' ' for x in range(-80,20)]) for y in range(-20,20)]))]]></content>
