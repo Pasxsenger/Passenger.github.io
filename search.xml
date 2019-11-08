@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[PTA(Advanced Level) 1002 A+B for Polynomials]]></title>
+    <url>%2F2019%2F11%2F08%2FPTA-Advanced-Level-1002-A-B-for-Polynomials%2F</url>
+    <content type="text"><![CDATA[This time, you are supposed to find A+B where A and B are two polynomials. Input Specification:Each input file contains one test case. Each case occupies 2 lines, and each line contains the information of a polynomial: K N1 aN1 *N2 *aN2 … NK aNK where K is the number of nonzero terms in the polynomial, N**i and aNi (i=1,2,⋯,K) are the exponents and coefficients, respectively. It is given that 1≤K≤10，0≤N**K&lt;⋯&lt;N2&lt;N1≤1000. Output Specification:For each test case you should output the sum of A and B in one line, with the same format as the input. Notice that there must be NO extra space at the end of each line. Please be accurate to 1 decimal place. Sample Input:122 1 2.4 0 3.22 2 1.5 1 0.5 Sample Output:13 2 1.5 1 2.9 0 3.2 solution123456789101112131415161718192021222324252627282930#include&lt;iostream&gt;#include&lt;cstdio&gt;using namespace std;int main()&#123; int a, k; double b, n[1010] = &#123; 0 &#125;; for (int i = 0; i &lt; 2; i++) &#123; scanf("%d", &amp;k); while (k--) &#123; scanf("%d%lf", &amp;a, &amp;b); n[a] += b; &#125; &#125; int maxx, cnt = 0; //记录最大的N for (int i = 0; i &lt; 1010; i++) &#123; if (n[i]) &#123; cnt++; maxx = i; &#125; &#125; printf("%d", cnt); for (int i = maxx; i &gt;= 0; i--) if (n[i]) printf(" %d %.1lf", i, n[i]); return 0;&#125;]]></content>
+      <categories>
+        <category>PAT</category>
+      </categories>
+      <tags>
+        <tag>Advanced Level</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2F2019%2F11%2F07%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
@@ -88,7 +99,7 @@
   <entry>
     <title><![CDATA[PTA(Advanced Level) 1001 A+B Format]]></title>
     <url>%2F2019%2F10%2F28%2FPTA-Advanced-Level-1001-A-B-Format%2F</url>
-    <content type="text"><![CDATA[Calculate a+b and output the sum in standard format – that is, the digits must be separated into groups of three by commas (unless there are less than four digits). Input Specification:Each input file contains one test case. Each case contains a pair of integers a and b where −10^6≤a,b≤10^6. The numbers are separated by a space. Output Specification:For each test case, you should output the sum of a and b in one line. The sum must be written in the standard format. Sample Input： 1-1000000 9 Sample Output: 1-999,991 Solution12345678910111213141516171819202122232425262728293031#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cmath&gt; using namespace std; int main()&#123; int a, b, c, ans[10], flag = 0, n = 1; scanf("%d%d", &amp;a, &amp;b); c = a + b; if (c == 0) &#123; //第一次提交没有想到a+b为0这一点 printf("0"); return 0; &#125; if (c &gt; 0) //determine the positive and negative flag = 1; c = abs(c); while (c) &#123; //convert the sum into an array ans[n++] = c % 10; c /= 10; &#125; if (flag == 0) printf("-"); for (int i = n - 1; i &gt; 0; i--) &#123; if (i % 3 == 0 &amp;&amp; i != n - 1) printf(","); printf("%d", ans[i]); &#125; return 0;&#125;]]></content>
+    <content type="text"><![CDATA[Calculate a+b and output the sum in standard format – that is, the digits must be separated into groups of three by commas (unless there are less than four digits). Input Specification:Each input file contains one test case. Each case contains a pair of integers a and b where −106≤a,b≤106. The numbers are separated by a space. Output Specification:For each test case, you should output the sum of a and b in one line. The sum must be written in the standard format. Sample Input:1-1000000 9 Sample Output:1-999,991 Solution12345678910111213141516171819202122232425262728293031#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cmath&gt; using namespace std; int main()&#123; int a, b, c, ans[10], flag = 0, n = 1; scanf("%d%d", &amp;a, &amp;b); c = a + b; if (c == 0) &#123; //第一次提交没有想到a+b为0这一点 printf("0"); return 0; &#125; if (c &gt; 0) //determine the positive and negative flag = 1; c = abs(c); while (c) &#123; //convert the sum into an array ans[n++] = c % 10; c /= 10; &#125; if (flag == 0) printf("-"); for (int i = n - 1; i &gt; 0; i--) &#123; if (i % 3 == 0 &amp;&amp; i != n - 1) printf(","); printf("%d", ans[i]); &#125; return 0;&#125;]]></content>
       <categories>
         <category>PAT</category>
       </categories>
